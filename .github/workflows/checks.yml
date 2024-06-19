@@ -17,11 +17,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Test
-        run: |
-          /Users/mac/Desktop/scraping_project/ozscraping-glory/docker-compose.yml
-          docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
+        working-directory: scraping_project/ozscraping-glory
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
 
       - name: Lint
-        run: |
-          /Users/mac/Desktop/scraping_project/ozscraping-glory/docker-compose.yml
-          docker-compose run --rm app sh -c "flake8"
+        working-directory: scraping_project/ozscraping-glory
+        run: docker-compose run --rm app sh -c "flake8"
