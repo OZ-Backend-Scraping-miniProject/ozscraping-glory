@@ -14,19 +14,19 @@ services:
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
-    environment:
-      - DB_HOST=db
-      - DB_NAME=miniproject
-      - DB_USER=glory
-      - DB_PASSWORD=1234
-    depends_on:
-      - db
+  #   environment:
+  #     - DB_HOST=db
+  #     - DB_NAME=miniproject
+  #     - DB_USER=glory
+  #     - DB_PASSWORD=1234
+  #   depends_on:
+  #     - db
 
-  db:
-    image: postgres:16-alpine
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=miniproject
-      - POSTGRES_USER=glory
-      - POSTGRES_PASSWORD=1234
+  # db:
+  #   image: postgres:16-alpine
+  #   volumes:
+  #     - ./data/db:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_DB=miniproject
+  #     - POSTGRES_USER=glory
+  #     - POSTGRES_PASSWORD=1234
