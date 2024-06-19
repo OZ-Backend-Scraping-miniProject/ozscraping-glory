@@ -1,36 +1,3 @@
-# version: "3.11"
-# services:
-#   app:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#       args:
-#         - DEV=true
-#     ports:
-#       - "8000:8000"
-#     volumes:
-#       - ./app:/app
-#     command: >
-#       sh -c "python manage.py wait_for_db &&
-#              python manage.py migrate &&
-#              python manage.py runserver 0.0.0.0:8000"
-#     environment:
-#       - DB_HOST=db
-#       - DB_NAME=miniproject
-#       - DB_USER=glory
-#       - DB_PASS=1234
-#     depends_on:
-#       - db
-
-#   db:
-#     image: postgres:16-alpine
-#     volumes:
-#       - ./data/db:/var/lib/postgresql/data
-#     environment:
-#       - POSTGRES_DB=miniproject
-#       - POSTGRES_USER=glory
-#       - POSTGRES_PASSWORD=1234
-
 version: "3.11"
 services:
   app:
@@ -40,7 +7,7 @@ services:
         - DEV=true
     volumes:
       - ./app:/app
-    command: sh -c "flake8"
+    command: flake8
     environment:
       - DB_HOST=db
       - DB_NAME=miniproject
@@ -57,4 +24,3 @@ services:
       - POSTGRES_DB=miniproject
       - POSTGRES_USER=glory
       - POSTGRES_PASSWORD=1234
-
