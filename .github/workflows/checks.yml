@@ -29,4 +29,5 @@ jobs:
           tags: user/app:latest
 
       - name: Lint
-        run: docker-compose run --rm app sh -c "flake8"
+        run: docker-compose -f path/to/your/docker-compose.yml run --rm app sh -c "flake8"
+        
