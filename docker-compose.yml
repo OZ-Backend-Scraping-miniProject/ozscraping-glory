@@ -13,9 +13,9 @@ services:
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
-      - DB_NAME=youtube
-      - DB_USER=seopftware
-      - DB_PASS=password123
+      - DB_NAME=miniproject
+      - DB_USER=glory
+      - DB_PASS=1234
     depends_on:
       - db
 
@@ -25,6 +25,6 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=youtube
-      - POSTGRES_USER=seopftware
-      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=miniproject
+      - POSTGRES_USER=glory
+      - POSTGRES_PASSWORD=1234
