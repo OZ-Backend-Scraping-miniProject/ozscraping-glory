@@ -1,10 +1,9 @@
-# version: "3.11"
+version: "3.11"
 
 services:
   app:
     build:
       context: .
-
       args:
         - DEV=true
     ports:
@@ -12,9 +11,9 @@ services:
     volumes:
       - ./app:/app
     command: >
-          sh -c "python manage.py wait_for_db &&
-                 python manage.py migrate &&
-                 python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=miniproject
@@ -22,7 +21,6 @@ services:
       - DB_PASSWORD=1234
     depends_on:
       - db
-
 
   db:
     image: postgres:16-alpine
