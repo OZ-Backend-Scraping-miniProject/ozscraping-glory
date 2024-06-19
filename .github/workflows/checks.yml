@@ -1,23 +1,25 @@
-#Github Actions CI/CD
----
-  name: Checks 
-  
-  on: [push] 
-  
-  jobs:
-    test-lint:
-      name: Test and Lint
-      runs-on: ubuntu-20.04 
-      steps: 
+name: CI/CD Pipeline
 
-        - name: Login in to Docker Hub
-          uses: docker/login-action@v1 
-          with:
-            username: ${{ secrets.MINI_GLORY_NAME }}
-            password: ${{ secrets.MINI_GLORY_TOKEN }}
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: Test 
-          run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
-        # - name: Lint
-        #   run: docker-compose run --rm app sh -c "flake8"성공해라
+on:
+  push:
+    branches:
+      - main  # 또는 사용하는 브랜치 이름으로 변경
+
+jobs:
+  test-lint:
+    name: Test and Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.MINI_GLORY_NAME }}
+          password: ${{ secrets.MINI_GLORY_TOKEN }}
+
+      - name: Test
+        run: |
+          docker-compose -f docker-compose.yml run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
