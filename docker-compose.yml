@@ -1,8 +1,11 @@
 # version: "3.11"
+
+
 services:
   app:
     build:
       context: .
+      dockerfile: Dockerfile
       args:
         - DEV=true
     ports:
@@ -11,8 +14,9 @@ services:
       - ./app:/app
     command: >
           sh -c "python manage.py wait_for_db &&
-             python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
+                 python manage.py migrate &&
+                 python manage.py runserver 0.0.0.0:8000
+                 flake8"
     environment:
       - DB_HOST=db
       - DB_NAME=miniproject
