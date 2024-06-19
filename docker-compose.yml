@@ -22,11 +22,11 @@ services:
       - db
 
   # app: 과 같은 뎁스로
-  # db:
-  #   image: postgres:16-alpine
-  #   volumes:
-  #     - ./data/db:/var/lib/postgresql/data
-  #   environment:
-  #     - POSTGRES_DB=youtube
-  #     - POSTGRES_USER=seopftware
-  #     - POSTGRES_PASSWORD=password123
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=miniproject
+      - POSTGRES_USER=glory
+      - POSTGRES_PASSWORD=1234
