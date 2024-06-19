@@ -21,7 +21,6 @@ services:
     depends_on:
       - db
 
-  # app: 과 같은 뎁스로
   db:
     image: postgres:16-alpine
     volumes:
