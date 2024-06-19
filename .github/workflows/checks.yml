@@ -18,10 +18,10 @@ jobs:
 
       - name: Test
         run: |
-          cd your-project-directory
+          /Users/mac/Desktop/scraping_project/ozscraping-glory/docker-compose.yml
           docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
 
       - name: Lint
         run: |
-          cd your-project-directory
+          /Users/mac/Desktop/scraping_project/ozscraping-glory/docker-compose.yml
           docker-compose run --rm app sh -c "flake8"
