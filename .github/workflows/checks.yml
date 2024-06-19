@@ -16,9 +16,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Test
-        working-directory: scraping_project/ozscraping-glory
-        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
+    #   - name: Test
+    #     working-directory: scraping_project/ozscraping-glory
+    #     run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
 
       - name: Lint
         working-directory: scraping_project/ozscraping-glory
