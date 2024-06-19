@@ -13,8 +13,8 @@
         - name: Login in to Docker Hub
           uses: docker/login-action@v1 # 다른 Docker 레지스트리에 로그인하기 위해 사용하는 GitHub Action
           with:
-            username: ${{ secrets.DOCKERHUB_USER }}
-            password: ${{ secrets.DOCKERHUB_TOKEN }}
+            username: ${{ secrets.MINI_GLORY_NAME }}
+            password: ${{ secrets.MINI_GLORY_TOKEN }}
   
         - name: Checkout # 깃헙 레포에 있는 코드를 작업 환경으로 가져오는 역할
           uses: actions/checkout@v2
