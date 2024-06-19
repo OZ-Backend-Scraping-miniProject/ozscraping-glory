@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test-lint:
-    name: Mini Project and Test
+    name: Mini Project Test and Lint
     runs-on: ubuntu-20.04
     steps:
       - name: Login in to Docker Hub
