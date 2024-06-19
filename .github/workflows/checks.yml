@@ -1,24 +1,23 @@
 #Github Actions CI/CD
 ---
-  name: Checks # Workflow 이름
+  name: Checks 
   
-  on: [push] # git push 이벤트 활성화 -> 레포지토리에 push를 했을 때 활성화
+  on: [push] 
   
   jobs:
     test-lint:
       name: Test and Lint
-      runs-on: ubuntu-20.04 # 작업 환경
-      steps: # 작업 단계
-  # 도커 연결 작업
+      runs-on: ubuntu-20.04 
+      steps: 
+
         - name: Login in to Docker Hub
-          uses: docker/login-action@v1 # 다른 Docker 레지스트리에 로그인하기 위해 사용하는 GitHub Action
+          uses: docker/login-action@v1 
           with:
-            username: ${{ secrets.DOCKERHUB_USER }}
-            password: ${{ secrets.DOCKERHUB_TOKEN }}
-  
-        - name: Checkout # 깃헙 레포에 있는 코드를 작업 환경으로 가져오는 역할
+            username: ${{ secrets.MINI_GLORY_NAME }}
+            password: ${{ secrets.MINI_GLORY_TOKEN }}
+        - name: Checkout
           uses: actions/checkout@v2
-        - name: Test # 테스트 코드 실행
+        - name: Test 
           run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
-        - name: Lint # pep8 파이썬 코드 스타일 가이드 준수 여부 검사
+        - name: Lint
           run: docker-compose run --rm app sh -c "flake8"
