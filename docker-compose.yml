@@ -1,27 +1,30 @@
-version: "3.11"
+# version: "3.11"
 services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile  # Dockerfile의 이름이 다르거나 위치가 다른 경우에 명시적으로 지정
+      dockerfile: Dockerfile
       args:
         - DEV=true
+    ports:
+      - "8000:8000"
     volumes:
       - ./app:/app
-    command: flake8
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
-      - DB_NAME=miniproject
-      - DB_USER=glory
-      - DB_PASS=1234
+      - DB_NAME=youtube
+      - DB_USER=seopftware
+      - DB_PASS=password123
     depends_on:
       - db
+
 
   db:
     image: postgres:16-alpine
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=miniproject
-      - POSTGRES_USER=glory
-      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=youtube
+      - POSTGRES_USER=seopftware
+      - POSTGRES_PASSWORD=password123
