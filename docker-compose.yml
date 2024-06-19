@@ -1,18 +1,23 @@
-version: "3.11"
+# version: "3.11"
 services:
   app:
     build:
       context: .
       args:
         - DEV=true
+    ports:
+      - "8000:8000"
     volumes:
       - ./app:/app
-    command: flake8
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=miniproject
-      - DB_USER=glory
-      - DB_PASS=1234
+      - DB_USER=gloryapp
+      - DB_PASS=password123
     depends_on:
       - db
 
@@ -21,6 +26,6 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=miniproject
-      - POSTGRES_USER=glory
-      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=youtube
+      - POSTGRES_USER=seopftware
+      - POSTGRES_PASSWORD=password123
