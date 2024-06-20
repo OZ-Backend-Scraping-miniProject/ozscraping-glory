@@ -1,3 +1,1 @@
-# ozscraping-glory
-
-# 19.15:16 Pull requests
+# repo_yang이건되냐
