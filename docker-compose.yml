@@ -1,18 +1,12 @@
-version: "3.11"
+version: "3.11" # docker composeapi
 services:
-  app:
-    env_file:
-      - .env
+  app: #django
     build:
       context: .
       args:
         - DEV=true
-    volumes:
-      - ./app:/app
-      - ./data:/app/data  # 새로운 볼륨 추가
     ports:
       - "8000:8000"
-    command: >
-      sh -c "python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
-
+    volumes:
+      - ./app:/app
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
